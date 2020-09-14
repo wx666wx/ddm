@@ -10,6 +10,7 @@ class fault : public QWidget
 public:
     explicit fault(QWidget *parent = nullptr);
 QPushButton a;
+
 signals:
 
 public slots:

@@ -48,6 +48,7 @@ void sub::mousePressEvent(QMouseEvent *e ){
       update();
       if(m==2&&s==2){ai(c,chessx,chessy);s=3-s;update();}
 
+
 }
 
 void sub::paintEvent(QPaintEvent *){

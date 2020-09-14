@@ -106,7 +106,7 @@ protected:
     }
     void ai(int (&a)[21][21],int q,int p){
         srand((unsigned int)time(NULL));
-        QString n="0011110",h="0110110",l="0101110";int sum=0;
+        QString n="0011110",h="0110110",l="0101110";int sum=0;int sum1=0;
         for(int m=0;m<4;m++){
             for(int i=-5;i<=-1;i++){QString b;int j=i;
                 for(;j<=i+6;j++){
@@ -117,14 +117,15 @@ protected:
                 for(int s=v-1;s>=0;s--){
                     k+=b[s];
                 }
-               if(b==n){a[q+dx[m]*(j-1)][p+dy[m]*(j-1)]=2;sum=1;break;}
+               if(b==n){a[q+dx[m]*(j-1)][p+dy[m]*(j-1)]=2;
+                           sum=1;break;}
                if(k==n){a[q+dx[m]*(j)][p+dy[m]*(j)]=2;sum=1;break;}
                if(b==h||k==h){a[q+dx[m]*(j-4)][p+dy[m]*(j-4)]=2;sum=1;break;}
                if(b==l){a[q+dx[m]*(j-5)][p+dy[m]*(j-5)]=2;sum=1;break;}
                if(k==l){a[q+dx[m]*(j-3)][p+dy[m]*(j-3)]=2;sum=1;break;}
             }if(sum)break;}
         if(sum==0){
-        QString n1="111110";QString h1="111101";QString l1="111011";int sum1=0;
+        QString n1="111110";QString h1="111101";QString l1="111011";
         for(int m=0;m<4;m++){
           for(int i=-5;i<=0;i++){QString b;int j=i;
               for(;j<i+6;j++){if(!inboard(q+dx[m]*j,p+dy[m]*j)||a[q+dx[m]*j][p+dy[m]*j]==2){b+='Y';continue;}//不在期盘；
@@ -134,7 +135,7 @@ protected:
               for(int s=v-1;s>=0;s--){
                   k+=b[s];
               }
-         if(b==n1){a[q+dx[m]*(j)][p+dy[m]*(j)]=2;sum1=1;break;}
+         if(b==n1){a[q+dx[m]*(j-1)][p+dy[m]*(j-1)]=2;sum1=1;break;}
           if(k==n1){a[q+dx[m]*(j-6)][p+dy[m]*(j-6)]=2;sum=1;break;}
              if(b==h1){a[q+dx[m]*(j-2)][p+dy[m]*(j-2)]=2;sum=1;break;}
              if(k==h1){a[q+dx[m]*(j-5)][p+dy[m]*(j-5)]=2;sum=1;break;}
@@ -142,7 +143,7 @@ protected:
             if(k==l1){a[q+dx[m]*(j-4)][p+dy[m]*(j-4)]=2;sum=1;break;}
 
           }if(sum1)break;}}
-        if(sum==0){int k=0;
+        if(sum==0&&sum1==0){int k=0;
         while(1){int s=rand()%8;k++;
             if(a[q+dx[s]][p+dy[s]]==0){a[q+dx[s]][p+dy[s]]=2;break;}
             if(k>15)break;}
